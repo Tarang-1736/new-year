@@ -1,0 +1,65 @@
+body { font-family: 'Quicksand', sans-serif; }
+.font-handwriting { font-family: 'Dancing Script', cursive; }
+
+.screen.active { display: flex; animation: fadeIn 0.8s ease-out forwards; }
+.screen.hidden { display: none; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Kitty Flight: Left -> Center (stay 2s) -> Right */
+@keyframes flyInOut {
+    0% { transform: translateX(-150%) rotate(-5deg); opacity: 0; }
+    20% { transform: translateX(0) rotate(0deg); opacity: 1; }
+    80% { transform: translateX(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateX(150%) rotate(5deg); opacity: 0; }
+}
+.animate-fly { animation: flyInOut 5.5s ease-in-out forwards; }
+
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+.bobbing { animation: bob 2s ease-in-out infinite; }
+
+/* Envelope Mechanics */
+.envelope-wrapper {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    background-color: #dcb081;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.envelope-front {
+    position: absolute;
+    width: 100%; height: 100%;
+    background-color: #c49a6c;
+    clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+    z-index: 10;
+    display: flex; justify-content: center; align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.seal {
+    width: 50px; height: 50px;
+    background: #e65c41;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    border: 3px solid #fff;
+    z-index: 11;
+    font-size: 1.5rem;
+}
+
+.letter-preview {
+    position: absolute;
+    bottom: 5%; left: 5%;
+    width: 90%; height: 90%;
+    background: white;
+    z-index: 5;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 4px;
+}
+
+.open .letter-preview {
+    transform: translateY(-120px) scale(1.05);
+    z-index: 20;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
