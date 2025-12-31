@@ -15,7 +15,7 @@
         <section id="screen-0" class="screen active flex flex-col items-center justify-center h-full text-center overflow-hidden">
             <div class="animate-fly mb-12">
                 <div class="bobbing">
-                    <img src="hello-kitty-plane.png" alt="Loading" class="w-50 h-auto object-contain mx-auto">
+                    <img src="hello-kitty-plane.png" alt="Loading" class="w-80 h-auto object-contain mx-auto">
                 </div>
             </div>
             <div class="text-3xl font-bold text-[#e65c41] tracking-wide mt-4">
@@ -28,7 +28,7 @@
             <img src="glasses-cat.png" class="absolute bottom-4 left-0 w-28 h-auto z-20">
             
             <p class="font-handwriting text-xl text-orange-500 italic">welcome to my little thought...</p>
-            <h1 class="font-handwriting text-7xl text-[#d34824] my-4 drop-shadow-md">Hey You <span class="text-pink-500">💕</span></h1>
+            <h1 class="font-handwriting text-7xl text-[#d34824] my-4 drop-shadow-md">Hey You <span class="text-pink-500 text-5xl">💕</span></h1>
             
             <div class="bg-[#d9e1be] w-full p-8 rounded-[2.5rem] border-2 border-[#b5be95] relative shadow-[10px_10px_0px_#b5be95]">
                 <div class="absolute top-4 left-6 flex space-x-2">
@@ -49,32 +49,48 @@
             </div>
         </section>
 
-        <section id="screen-2" class="screen hidden flex-col items-center justify-center h-full text-center relative">
+        <section id="screen-2" class="screen hidden flex-col items-center justify-center h-full text-center relative px-4">
             <p class="font-handwriting text-xl text-orange-500 italic">Straight from my heart</p>
-            <h2 class="font-handwriting text-6xl text-[#d34824] mb-8 font-bold">A Little Note ✉️</h2>
+            <h2 class="font-handwriting text-5xl text-[#d34824] mb-8 font-bold italic">A Little Note ✉️</h2>
             
-            <div class="bg-[#f2e8cf] w-full p-8 rounded-[2.5rem] border-2 border-[#e1d5b7] shadow-xl relative min-h-[350px] flex flex-col items-center justify-center">
-                <div class="envelope-wrapper" onclick="openNote()">
-                    <div class="envelope">
-                        <div class="envelope-front">
-                            <div class="seal">💌</div>
-                        </div>
-                        <div class="letter-preview">
-                            <div class="p-4 text-left font-semibold text-gray-800">
-                                <p class="font-handwriting text-[#d34824] text-xl">Hey Favorite Person,</p>
-                                <p class="text-sm mt-2 leading-relaxed">Happy New Year! I may have messed up sometimes, but you mean the world to me. I'm working on being better for us. ❤️</p>
+            <div class="bg-[#f2e8cf] w-full p-6 rounded-[2.5rem] border-2 border-[#e1d5b7] shadow-lg relative min-h-[450px] flex flex-col items-center justify-start pt-20 transition-all">
+                
+                <div id="envelope-wrapper" class="envelope-wrapper" onclick="openLetter()">
+                    <div class="envelope-front">
+                        <div class="seal">💌</div>
+                    </div>
+                    
+                    <div id="letter-paper" class="letter-paper">
+                        <div class="p-6 text-left">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-2 text-xs">💝</div>
+                                <span class="text-orange-600 font-bold text-sm">Hey My Favorite Person</span>
                             </div>
+                            <hr class="border-orange-100 mb-4">
+                            <p class="text-gray-700 text-xs leading-relaxed font-semibold italic">
+                                Hey love, I may have messed up a bit. I never meant to hurt you, sometimes my brain trips over my heart. What I *do* know for sure is how much you matter to me.
+                                <br><br>
+                                You're incredibly special to me, and I hate the idea of being the reason you felt anything less than loved.
+                                <br><br>
+                                <span class="text-right block text-orange-500">Always yours 💕</span>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <p class="mt-8 text-gray-600 font-bold animate-bounce">Click to open</p>
-                <button class="mt-4 bg-[#f9eb97] text-[#d34824] px-8 py-2 rounded-full font-bold border-2 border-[#f2e17d] text-sm">
-                    Just For You 💌
-                </button>
+                
+                <div id="click-instruction" class="mt-40">
+                    <p class="text-gray-600 text-sm font-bold animate-bounce">Click to open</p>
+                    <button class="mt-2 bg-[#f9eb97] text-[#d34824] px-8 py-2 rounded-full font-bold border-2 border-[#f2e17d] text-sm">
+                        Just For You 💌
+                    </button>
+                </div>
+
+                <button id="next-btn" onclick="location.reload()" class="hidden mt-40 bg-[#e65c41] text-white px-8 py-3 rounded-full font-bold shadow-md">Restart Experience →</button>
             </div>
         </section>
 
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
