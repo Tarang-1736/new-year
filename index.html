@@ -3,93 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Year 2026</title>
+    <title>2026 | For My Bestie</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Indie+Flower&family=Space+Mono&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#f5e1c8] flex items-center justify-center h-screen overflow-hidden">
+<body class="bg-[#0a0a12] text-[#e2e2e2] font-['Quicksand'] overflow-hidden">
 
-    <div class="relative w-[95%] max-w-md h-[92vh] bg-[#f5e1c8] rounded-[3rem] shadow-2xl p-4 overflow-hidden border-[12px] border-white/30">
+    <div class="scanlines"></div>
+    <div id="steam-container" class="pointer-events-none absolute inset-0 z-10"></div>
+
+    <main id="app-container" class="relative min-h-screen w-full flex items-center justify-center p-6 transition-all duration-1000">
         
-        <section id="screen-0" class="screen active flex flex-col items-center justify-center h-full text-center overflow-hidden">
-            <div class="animate-fly mb-12">
-                <div class="bobbing">
-                    <img src="hello-kitty-plane.png" alt="Loading" class="w-50 h-auto object-contain mx-auto">
+        <section id="scene-1" class="scene active flex flex-col items-center">
+            <div class="relative w-64 h-80 bg-[#16213e] border-8 border-[#2d2438] rounded-t-full shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden mb-12 group cursor-pointer" onclick="nextScene(2)">
+                <div id="stars" class="absolute inset-0"></div>
+                <div class="shooting-star"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent"></div>
+                <div class="absolute bottom-6 w-full text-center">
+                    <p class="text-[9px] tracking-[0.4em] uppercase text-amber-200/40 animate-pulse font-bold">Tap to enter</p>
                 </div>
             </div>
-            <div class="text-3xl font-bold text-[#e65c41] tracking-wide mt-4">
-                <span id="loading-text"></span><span class="animate-pulse">|</span>
+            <div class="text-center">
+                <h1 class="text-xl font-light tracking-[0.3em] uppercase">Quiet Hours</h1>
+                <p id="clock" class="text-xs text-slate-500 font-mono mt-2 tracking-widest">00:00:00</p>
             </div>
         </section>
 
-        <section id="screen-1" class="screen hidden flex-col items-center justify-center h-full text-center relative px-2">
-            <img src="pineapple-cat.png" class="absolute top-10 right-0 w-24 h-auto z-20 animate-float">
-            <img src="glasses-cat.png" class="absolute bottom-4 left-0 w-28 h-auto z-20">
-            
-            <p class="font-handwriting text-xl text-orange-500 italic">welcome to my little thought...</p>
-            <h1 class="font-handwriting text-7xl text-[#d34824] my-4 drop-shadow-md">Hey You <span class="text-pink-500 text-5xl">💕</span></h1>
-            
-            <div class="bg-[#d9e1be] w-full p-8 rounded-[2.5rem] border-2 border-[#b5be95] relative shadow-[10px_10px_0px_#b5be95]">
-                <div class="absolute top-4 left-6 flex space-x-2">
-                    <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                    <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                    <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+        <section id="scene-2" class="scene hidden flex flex-col items-center max-w-md w-full">
+            <div class="bg-[#fdf6e3] text-[#5c4d4d] p-8 md:p-10 rounded-sm shadow-[20px_20px_0px_#16213e] transform rotate-1 relative">
+                <div onclick="toggleSecret()" class="absolute -top-4 -right-4 bg-rose-400 text-white p-2 text-[10px] shadow-md cursor-pointer hover:scale-110 transition-transform -rotate-12 font-bold z-30 uppercase tracking-tighter">
+                    Secret Note 🤫
                 </div>
-                
-                <p class="text-[#2c3e50] text-xl leading-relaxed mt-4 font-semibold">
-                    I wanted to do a tiny something because you mean a lot to me.
-                </p>
-                <p class="font-handwriting text-xl text-[#d34824] mt-8 italic">Tap below, okay? ✨</p>
-                
-                <button onclick="showScreen(2)" class="mt-8 bg-[#e65c41] text-white px-10 py-4 rounded-full font-bold shadow-lg active:scale-95 transition-transform text-xl flex items-center mx-auto space-x-2">
-                    <span>Open This 💖</span>
-                    <span>→</span>
+                <div id="secret-note" class="hidden absolute inset-0 bg-[#fdf6e3] z-20 p-8 flex items-center justify-center text-center rounded-sm">
+                    <p class="font-['Indie_Flower'] text-xl italic text-rose-600">
+                        "Bacchiii I still haven't forgotten that I have an embarrassing photo of yours. 2026 won't save you from me posting it up on your Birthday! 😂"
+                        <br><br>
+                        <span class="text-slate-400 text-sm cursor-pointer" onclick="toggleSecret()">(Click to close)</span>
+                    </p>
+                </div>
+
+                <div class="font-['Indie_Flower'] text-xl space-y-6">
+                    <h2 class="text-2xl font-bold border-b-2 border-amber-300 inline-block">Bestie_Tape_2026</h2>
+                    <p>Hey you,</p>
+                    <p class="leading-relaxed">
+                        If you're reading this, we survived our first year. Thanks for being the person I can call at any hour to complain about things that don't matter.
+                    </p>
+                    <p class="text-rose-500 font-bold">I hope 2026 is as chaotic and beautiful as our friendship. Stay delusional. It suits us.</p>
+                </div>
+
+                <button onclick="nextScene(3)" class="mt-10 w-full py-3 bg-[#2d2438] text-white rounded-lg font-mono text-xs tracking-widest hover:bg-rose-900 transition-colors uppercase">
+                    Turn Page →
                 </button>
             </div>
         </section>
 
-        <section id="screen-2" class="screen hidden flex-col items-center justify-center h-full text-center relative px-4">
-            <p class="font-handwriting text-xl text-orange-500 italic">Straight from my heart</p>
-            <h2 class="font-handwriting text-5xl text-[#d34824] mb-8 font-bold italic">A Little Note ✉️</h2>
-            
-            <div class="bg-[#f2e8cf] w-full p-6 rounded-[2.5rem] border-2 border-[#e1d5b7] shadow-lg relative min-h-[450px] flex flex-col items-center justify-start pt-20 transition-all">
-                
-                <div id="envelope-wrapper" class="envelope-wrapper" onclick="openLetter()">
-                    <div class="envelope-front">
-                        <div class="seal">💌</div>
-                    </div>
-                    
-                    <div id="letter-paper" class="letter-paper">
-                        <div class="p-6 text-left">
-                            <div class="flex items-center mb-4">
-                                <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-2 text-xs">💝</div>
-                                <span class="text-orange-600 font-bold text-sm">Hey My Favorite Person</span>
-                            </div>
-                            <hr class="border-orange-100 mb-4">
-                            <p class="text-gray-700 text-xs leading-relaxed font-semibold italic">
-                                Hey love, I may have messed up a bit. I never meant to hurt you, sometimes my brain trips over my heart. What I *do* know for sure is how much you matter to me.
-                                <br><br>
-                                You're incredibly special to me, and I hate the idea of being the reason you felt anything less than loved.
-                                <br><br>
-                                <span class="text-right block text-orange-500">Always yours 💕</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="click-instruction" class="mt-40">
-                    <p class="text-gray-600 text-sm font-bold animate-bounce">Click to open</p>
-                    <button class="mt-2 bg-[#f9eb97] text-[#d34824] px-8 py-2 rounded-full font-bold border-2 border-[#f2e17d] text-sm">
-                        Just For You 💌
+        <section id="scene-3" class="scene hidden flex flex-col items-center text-center space-y-8 w-full max-w-sm">
+            <div id="cat-container" class="relative">
+                <div class="text-6xl cursor-pointer hover:scale-125 transition-transform" onclick="meow()">🐱</div>
+                <div id="meow-bubble" class="absolute -top-8 -right-8 bg-white text-black text-[10px] px-2 py-1 rounded-full opacity-0 transition-opacity font-bold">Meow!</div>
+            </div>
+
+            <div class="space-y-4">
+                <h2 class="text-xl font-bold text-amber-200 uppercase tracking-widest">Entering 2026 As:</h2>
+                <div class="flex gap-4 justify-center">
+                    <button onclick="setMood('chaos')" class="group flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full border border-white/10 group-hover:bg-rose-500/20 transition-all">😈</div>
+                        <span class="text-[8px] uppercase tracking-tighter">Chaos</span>
+                    </button>
+                    <button onclick="setMood('chill')" class="group flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full border border-white/10 group-hover:bg-amber-500/20 transition-all">☕</div>
+                        <span class="text-[8px] uppercase tracking-tighter">Chill</span>
+                    </button>
+                    <button onclick="setMood('happy')" class="group flex flex-col items-center gap-2">
+                        <div class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-full border border-white/10 group-hover:bg-green-500/20 transition-all">✨</div>
+                        <span class="text-[8px] uppercase tracking-tighter">Pure Joy</span>
                     </button>
                 </div>
-
-                <button id="next-btn" onclick="location.reload()" class="hidden mt-40 bg-[#e65c41] text-white px-8 py-3 rounded-full font-bold shadow-md">Restart Experience →</button>
+                <p id="mood-response" class="text-[10px] italic text-slate-500 h-4"></p>
             </div>
+
+            <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 w-full font-mono text-[10px] space-y-3 text-left">
+                <div class="flex items-center gap-3"><i data-lucide="heart" size="12" class="text-rose-400"></i> Always picking up the phone.</div>
+                <div class="flex items-center gap-3"><i data-lucide="coffee" size="12" class="text-amber-400"></i> More kinder joy for us, less stress.</div>
+                <div class="flex items-center gap-3"><i data-lucide="sparkles" size="12" class="text-blue-400"></i> Making 2026 our best year yet.</div>
+            </div>
+
+            <button onclick="launchCelebration()" class="w-full py-4 bg-amber-200 text-[#1a1a2e] rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-white transition-all shadow-lg shadow-amber-200/10">
+                Ready for Midnight?
+            </button>
         </section>
 
+        <section id="scene-4" class="scene hidden flex flex-col items-center justify-center text-center">
+            <div id="fireworks-container" class="absolute inset-0 pointer-events-none"></div>
+            <div class="relative z-10 space-y-6 animate-fade-in px-4">
+                <h1 class="font-['Indie_Flower'] text-7xl md:text-9xl text-amber-200 drop-shadow-[0_0_25px_rgba(252,211,77,0.8)]">
+                    Happy 2026!
+                </h1>
+                <p class="text-xl tracking-[0.5em] uppercase font-light text-white/80">To My Favorite Human</p>
+                <div class="pt-8">
+                    <p class="text-sm italic text-slate-400 font-mono">"New Year. Same Us. Better Vibes."</p>
+                </div>
+                <button onclick="location.reload()" class="mt-12 px-8 py-2 border border-white/20 rounded-full text-[10px] tracking-[0.3em] hover:bg-white/10 transition-all uppercase">
+                    Replay the Journey
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div class="fixed bottom-8 right-8 z-50 flex gap-4">
+        <button id="music-btn" class="p-4 bg-white/5 backdrop-blur-lg border border-white/10 rounded-full hover:bg-white/20 transition-all">
+            <i data-lucide="music" size="18" id="music-icon"></i>
+        </button>
     </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="script.js"></script>
 </body>
