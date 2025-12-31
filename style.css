@@ -6,7 +6,7 @@ body { font-family: 'Quicksand', sans-serif; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Kitty Flight: Left -> Center (stay 2s) -> Right */
+/* LOADING ANIMATION: FLY LEFT -> MIDDLE (2s) -> RIGHT */
 @keyframes flyInOut {
     0% { transform: translateX(-150%) rotate(-5deg); opacity: 0; }
     20% { transform: translateX(0) rotate(0deg); opacity: 1; }
@@ -18,7 +18,7 @@ body { font-family: 'Quicksand', sans-serif; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 .bobbing { animation: bob 2s ease-in-out infinite; }
 
-/* Envelope Mechanics */
+/* ENVELOPE MECHANICS */
 .envelope-wrapper {
     position: relative;
     width: 280px;
@@ -26,6 +26,7 @@ body { font-family: 'Quicksand', sans-serif; }
     background-color: #dcb081;
     border-radius: 8px;
     cursor: pointer;
+    z-index: 10;
 }
 
 .envelope-front {
@@ -33,9 +34,9 @@ body { font-family: 'Quicksand', sans-serif; }
     width: 100%; height: 100%;
     background-color: #c49a6c;
     clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
-    z-index: 10;
+    z-index: 30;
     display: flex; justify-content: center; align-items: center;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
 }
 
 .seal {
@@ -44,22 +45,30 @@ body { font-family: 'Quicksand', sans-serif; }
     border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
     border: 3px solid #fff;
-    z-index: 11;
+    z-index: 31;
     font-size: 1.5rem;
 }
 
-.letter-preview {
+.letter-paper {
     position: absolute;
     bottom: 5%; left: 5%;
-    width: 90%; height: 90%;
+    width: 90%; height: 100%;
     background: white;
-    z-index: 5;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 20;
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.open .letter-preview {
-    transform: translateY(-120px) scale(1.05);
-    z-index: 20;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+/* THE OPEN STATE */
+.envelope-wrapper.open .letter-paper {
+    transform: translateY(-220px);
+    height: 380px;
+    width: 105%;
+    left: -2.5%;
+    z-index: 50;
+}
+
+.envelope-wrapper.open .envelope-front {
+    transform: translateY(20px);
 }
